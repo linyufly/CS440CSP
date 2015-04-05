@@ -243,7 +243,7 @@ void Scheduler::depth_first_search(
 
     depth_first_search(
         other_prices, current_prices, credits, required_courses, dependents,
-        required, other_order, current_order, 0, c_min, c_max,
+        required, other_order, current_order, -1, c_min, c_max,
         num_remaining_required, cost_so_far, 0, current_semester + 1,
         num_remaining_prerequisites, semester_taken, &empty_course_list,
         best_price, plan);
