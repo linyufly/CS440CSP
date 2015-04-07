@@ -11,8 +11,8 @@
 // const char *kInputFile = "data/bigScenario_1.txt";
 // const char *kInputFile = "data/bigScenario_2.txt";
 // const char *kInputFile = "sampleScenario.txt";
-// const char *kInputFile = "firstScenario.txt";
-const char *kInputFile = "secondScenario.txt";
+const char *kInputFile = "firstScenario.txt";
+// const char *kInputFile = "secondScenario.txt";
 // const char *kInputFile = "thirdScenario.txt";
 // const char *kInputFile = "fourthScenario.txt";
 // const char *kInputFile = "input.txt";

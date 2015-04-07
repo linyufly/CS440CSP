@@ -71,19 +71,15 @@ void update_dependents(int candidate, int delta,
 }
 
 void invoke_selection(int candidate, int current_semester,
-                      const std::vector<std::vector<int> > &dependents,
                       std::vector<int> *last_semester_courses,
-                      std::vector<int> *semester_taken,
-                      std::vector<int> *num_remaining_prerequisites) {
+                      std::vector<int> *semester_taken) {
   last_semester_courses->push_back(candidate);
   (*semester_taken)[candidate] = current_semester;
 }
 
 void revoke_selection(int candidate,
-                      const std::vector<std::vector<int> > &dependents,
                       std::vector<int> *last_semester_courses,
-                      std::vector<int> *semester_taken,
-                      std::vector<int> *num_remaining_prerequisites) {
+                      std::vector<int> *semester_taken) {
   last_semester_courses->pop_back();
   (*semester_taken)[candidate] = -1;
 }
@@ -129,9 +125,8 @@ void Scheduler::explore_in_dfs(
     return;
   }
 
-  invoke_selection(candidate, current_semester, dependents,
-                   last_semester_courses, semester_taken,
-                   num_remaining_prerequisites);
+  invoke_selection(candidate, current_semester,
+                   last_semester_courses, semester_taken);
 
   int delta_required = required[candidate]? 1 : 0;
 
@@ -144,9 +139,7 @@ void Scheduler::explore_in_dfs(
       num_remaining_prerequisites, semester_taken, last_semester_courses,
       best_price, plan);
 
-  revoke_selection(candidate, dependents,
-                   last_semester_courses, semester_taken,
-                   num_remaining_prerequisites);
+  revoke_selection(candidate, last_semester_courses, semester_taken);
 }
 
 // Search rules:
